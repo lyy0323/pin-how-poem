@@ -4,10 +4,21 @@ import random
 bankfile = "./bank.txt"
 savefile = "./save.txt"
 
-# print(bank_1)
-# print(bank_2)
-
 class Dice:
+    '''
+    A class to represent a dice.
+    Attributes:
+        id: int, the id of the dice.
+        tone: str, the tone of the dice, "ping" or "ze".
+        words: list, the words of the dice, a list of strings. Default with length of 6.
+        status: str, the current status of the dice, a string. Imagine that as if the top side of the dice. Default with the first word in words.
+    Methods:
+        __str__(): return the string representation of the dice.
+        __repr__(): return the string representation of the dice.
+        roll(): roll the dice, return the current status of the dice.
+        __init__(): initialize the dice with id, tone and words.
+    '''
+
     def __init__(self, _id, tone, words):
         self.id = _id
         self.tone = tone
@@ -25,7 +36,23 @@ class Dice:
         return self.status
 
 class DiceBank:
+    '''
+    A class to represent a bank of dices.
+    Attributes:
+        dices: dict, a dictionary of dices, with keys "double" and "single", and values are dictionaries of dices.
+        sample: list, a list of tuples, each tuple contains the length, pingze and id of the dice.
+        result: str, the result of the roll.
+    Methods:
+        __str__(): return the string representation of the bank.
+        __repr__(): return the string representation of the bank.
+        draw(rule): draw a sample from the bank, according to the rhyme rule.
+        roll(): roll the dices in sample, return the result.
+    '''
+
     def __init__(self, bankfile):
+        '''
+        Initialize the bank with a file.
+        '''
         self.dices = {"double": {}, "single": {}}
         self.sample = []
         self.result = ""
@@ -47,6 +74,13 @@ class DiceBank:
         return f"DiceBank: {self.dices}"
 
     def draw(self, rule: list):
+        '''
+        Draw a sample from the bank, according to the rhyme rule.
+
+        rule: list, a list of tuples, each tuple contains the length and ping-ze. Just need to define the first half of the contrasting sentence.
+
+        For example, if the rule is [("double", "ze"), ("double", "ping"), ("single", "ping"), ("double", "ze")], then the second half of the contrasting sentence is [("double", "ping"), ("double", "ze"), ("single", "ze"), ("double", "ping")], which will be generated automatically.
+        '''
         # a sample of rule: [("double", "ze"), ("double", "ping"), ("single", "ping"), ("double", "ze")]
         self.sample = []
         for r in rule:
@@ -54,6 +88,9 @@ class DiceBank:
         return self
     
     def roll(self):
+        '''
+        Roll the dices in sample, and return the result. Does not change the sample and the rule.
+        '''
         # roll the dices in sample
         result_sentence = ""
         if self.sample:
@@ -73,6 +110,15 @@ class DiceBank:
 
 
 def experiment(dicebank: DiceBank, rule: list, draws=10, rolls=1, save=False, save_attr=False):
+    '''
+    Experiment with the dice bank, draw a sample and roll the dices.
+    dicebank: DiceBank, the dice bank to use.
+    rule: list, a list of tuples, each tuple contains the length and ping-ze. Just need to define the first half of the contrasting sentence.
+    draws: int, the number of draws. Default is 10.
+    rolls: int, the number of rolls. Default is 1.
+    save: bool, whether to save the result to a file. Default is False.
+    save_attr: bool, whether to save the attributes of the dices to a file. Default is False.
+    '''
     for _ in range(draws):
         dicebank.draw(rule)
         for _1 in range(rolls):
@@ -94,6 +140,5 @@ def experiment(dicebank: DiceBank, rule: list, draws=10, rolls=1, save=False, sa
 
 if __name__ == "__main__":
     Bank = DiceBank(bankfile)
-    # print(Bank.dices)
     rule = [("double", "ze"), ("double", "ping"), ("single", "ping"), ("double", "ze")]
-    experiment(Bank, rule, draws=10, rolls=5, save=True, save_attr=True)
+    experiment(Bank, rule, draws=20, rolls=5, save=True, save_attr=True)

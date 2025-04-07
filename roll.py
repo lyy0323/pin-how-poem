@@ -20,18 +20,34 @@ class Dice:
     '''
 
     def __init__(self, _id, tone, words):
+        '''
+        Initialize the dice with id, tone and words.
+        id: int, the id of the dice.
+        tone: str, the tone of the dice, "ping" or "ze".
+        words: list, the words of the dice, a list of strings. Default with length of 6.
+        status: str, the current status of the dice, a string. Imagine that as if the top side of the dice. Default with the first word in words.
+        '''
         self.id = _id
         self.tone = tone
         self.words = words
         self.status = self.words[0]
 
     def __str__(self):
+        '''
+        Return the string representation of the dice.
+        '''
         return f"{self.id} ({'平' if self.tone == 'ping' else '仄'}): {' | '.join(self.words)}"
     
     def __repr__(self):
+        '''
+        Return the string representation of the dice.
+        '''
         return self.__str__()
     
     def roll(self):
+        '''
+        Roll the dice, return the current status of the dice.
+        '''
         self.status = random.choice(self.words)
         return self.status
 

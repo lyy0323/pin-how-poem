@@ -6,7 +6,7 @@ This project is a Python-based tool for generating Chinese poetry using a dice-r
 
 - **Dice-based Word Selection**: Words are selected randomly from a predefined bank of words using dice objects. This predefined word bank is a collaborative work of members in Wenyun Department, Guoxue Club, SJTU.
 - **Tone Rules**: Supports tone rules (平/仄) for Chinese poetry.
-- **Customizable Rules**: Users can define their own rhyme schemes for word selection. The default rhyme scheme is `[("double", "ze"), ("double", "ping"), ("single", "ping"), ("double", "ze")`, which stands for "仄仄平平平仄仄，平平仄仄仄平平", a common rhyme scheme of traditional 7-syllable verses.
+- **Customizable Rules**: Users can define their own rhyme schemes for word selection. The default rhyme scheme is `[("double", "ze"), ("double", "ping"), ("single", "ping"), ("double", "ze")]`, which stands for "仄仄平平平仄仄，平平仄仄仄平平", a common rhyme scheme of traditional 7-syllable verses.
 - **Batch Experiments**: Generate multiple poems with customizable draw and roll counts.
 - **Save Results**: Option to save generated poems and their attributes to a file.
 

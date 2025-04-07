@@ -18,10 +18,22 @@ This project is a Python-based tool for generating Chinese poetry using a dice-r
 
 ## Installation
 
+### From PyPI
+
+1. Install from PyPI
+
+	```bash
+	pip install pin-how-poem
+	```
+
+2. Ensure you have Python 3 installed.
+
+### From GitHub
+
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-repo/pin-how-poem.git
+    git clone https://github.com/lyy0323/pin-how-poem.git
     cd pin-how-poem
     ```
 
@@ -39,11 +51,20 @@ This project is a Python-based tool for generating Chinese poetry using a dice-r
 
     Each line represents a pair of words with their tones (平/仄).
 
-2. Run the script:
+2. If you installed it from GitHub, run the script:
 
-    ```shell
-    python roll.py
+    ```bash
+	python roll.py
     ```
+	
+   If you installed it from PyPI, you can call the library from Python code:
+   
+	```python
+	from pin_how_poem import experiment
+	print(experiment())
+	```
+   
+   Feel free to use it in your own application!
 
 3. You can customize the rules and experiment parameters in the `__main__` section of roll.py:
 

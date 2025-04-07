@@ -1,0 +1,25 @@
+[project]
+name = "pin-how-poem"
+version = "0.0.1"
+authors = [
+  { name="lyy0323" },
+]
+description = "Use Chinese word dices to generate contrasting sentences. A poetry teaching aid designed by lyy0323 from Guoxue Club, SJTU."
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/lyy0323/"
+"Bug Tracker" = "https://github.com/lyy0323/issues"
+
+[tool.setuptools]
+packages = ["pin_how_poem"]
+package-dir = { "" = "src" }
+include-package-data = true
+ 
+[tool.setuptools.package-data]
+"pin_how_poem" = ["*.txt"]
